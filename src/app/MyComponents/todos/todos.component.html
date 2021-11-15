@@ -1,0 +1,11 @@
+<div class="container-fluid">
+    <h1 class="text-center">To-do list by Sana Shaik</h1>
+<app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+<h4 class="container mt-3" style="color: rgb(36, 156, 150); font-style: oblique">Your Todos:</h4>
+<div *ngIf="this.todos.length===0; else elseBlock" class="container">No todos to display</div>
+<ng-template #elseBlock>
+    <div *ngFor="let todo of todos; index as i">
+        <app-todo-item [todo]="todo" [i]="i" (todoDelete)="deleteTodo($event)" (todoCheckbox)="toggleTodo($event)"></app-todo-item>
+    </div>
+</ng-template>
+</div>
