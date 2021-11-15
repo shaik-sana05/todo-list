@@ -7,7 +7,7 @@ import { Todo } from 'src/app/Todos';
   styleUrls: ['./add-todo.component.css']
 })
 export class AddTodoComponent implements OnInit {
-  private formOk: boolean=true;
+  formOk: boolean=true;
   title: string;
   desc: string;
   @Output() todoAdd: EventEmitter<Todo> = new EventEmitter
