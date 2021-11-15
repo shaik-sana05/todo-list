@@ -7,6 +7,7 @@ import { Todo } from 'src/app/Todos';
   styleUrls: ['./add-todo.component.css']
 })
 export class AddTodoComponent implements OnInit {
+  private formOk: boolean=true;
   title: string;
   desc: string;
   @Output() todoAdd: EventEmitter<Todo> = new EventEmitter
@@ -15,12 +16,21 @@ export class AddTodoComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(){
-    const todo = {
-      title:this.title,
-      desc:this.desc,
-      active: true
+  
+    if(this.title !="" && this.desc!=""){
+      
+      const todo = {
+        title:this.title,
+        desc:this.desc,
+        active: true
+      }
+      this.todoAdd.emit(todo);
+      this.title="";
+      this.desc=""
     }
-    this.todoAdd.emit(todo);
+    else {
+      this.formOk=false
+    }
   }
 
 }
