@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h1 class="text-center">To-do list by Sana Shaik</h1>
+    <h1 class="text-center">To-do List by Sana Shaik</h1>
 <app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
 <h4 class="container mt-3" style="color: rgb(36, 156, 150); font-style: oblique">Your Todos:</h4>
 <div *ngIf="this.todos.length===0; else elseBlock" class="container">No todos to display</div>
