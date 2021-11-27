@@ -1,13 +1,18 @@
-<h4 class="container">Add a todo</h4>
-    <form (ngSubmit)=onSubmit() class="container">
+<h4 class="container">Add a to-do</h4>
+    <form #userForm=ngForm (ngSubmit)=onSubmit() class="container">
         <div class="mb-3">
-        <label for="title" class="form-label">Todo Title</label>
-        <input type="text" [(ngModel)]="title" class="form-control" id="title" name="title" aria-describedby="emailHelp">
+
+            <label for="title" class="form-label">To-do Title</label>
+            <input type="text" [(ngModel)]="toDoTitle" class="form-control" id="title" name="title" aria-describedby="emailHelp"
+            required #title="ngModel" [class.is-invalid]="title.invalid && title.touched">
+            <div *ngIf="title.errors && (title.invalid && title.touched)">
+                <small class="text-danger" *ngIf="title.errors['required']">Please provide a title</small>
+            </div>
         </div>
         <div class="mb-3">
-        <label for="desc" class="form-label">Todo Description</label>
-        <input type="text" [(ngModel)]="desc" class="form-control" id="desc" name="desc">
+            <label for="desc" class="form-label">To-do Description</label>
+            <input type="text" [(ngModel)]="desc" class="form-control" id="desc" name="desc">
         </div>
         <div *ngIf="formOk==false">Please enter a valid title and description.</div>
-        <button type="submit" class="btn btn-primary">Add todo</button>
+        <button [disabled]="userForm.form.invalid" type="submit" class="btn btn-primary">Add</button>
     </form>
